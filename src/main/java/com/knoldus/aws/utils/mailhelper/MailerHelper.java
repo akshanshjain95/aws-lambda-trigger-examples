@@ -12,15 +12,14 @@ import java.util.Properties;
 public class MailerHelper {
 
     private static final ConfigReader configReader = ConfigReader.getConfigReader("mail");
+    private static final String FROM = configReader.getProperty("from");
+    private static final String FROM_NAME = configReader.getProperty("fromname");
+    private static final String HOST = configReader.getProperty("host");
+    private static final String USERNAME = configReader.getProperty("username");
+    private static final String PASSWORD = configReader.getProperty("password");
+    private static final int PORT = Integer.parseInt(configReader.getProperty("port"));
 
     public static boolean sendMail(String to, String subject, String body) throws Exception {
-        final String FROM = configReader.getProperty("from");
-        final String FROM_NAME = configReader.getProperty("fromname");
-        final String HOST = configReader.getProperty("host");
-        final String USERNAME = configReader.getProperty("username");
-        final String PASSWORD = configReader.getProperty("password");
-        final int PORT = Integer.parseInt(configReader.getProperty("port"));
-
         boolean success;
 
         Properties props = System.getProperties();
